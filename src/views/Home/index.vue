@@ -8,7 +8,8 @@
         @start="start"
         @end="end"
         :move="move"
-        style="display: inline-block; width:190px;height: 200px;background: #eee;overflow: auto">
+        >
+        <!-- style="display: inline-block; width:190px;height: 600px;background: #eee;overflow: auto"> -->
         <!-- <li v-for="(item, index) in list2" :class="setclass(item,index)" :key="index">{{item.name}}</li> -->
         <!-- <transition-group> -->
           <div class="one">1</div>
