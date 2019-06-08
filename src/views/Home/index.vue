@@ -21,9 +21,17 @@
     </div>
 
     <div class="right">
-      <div class="five">5</div>
-      <div class="six">6</div>
-      <div class="seven">7</div>
+      <draggable
+        v-model="list2"
+        @change="change"
+        @start="start"
+        @end="end"
+        :move="move"
+        >
+        <div class="five">5</div>
+        <div class="six">6</div>
+        <div class="seven">7</div>
+      </draggable>
     </div>
 
   </div>
