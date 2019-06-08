@@ -3,7 +3,6 @@
     <div class="left">
       <!-- <draggable :options="{group:'people',animation:150,ghostClass:'sortable-ghost',chosenClass:'chosenClass',scroll:true,scrollSensitivity:200}" -->
       <draggable
-        v-model="list2"
         @change="change"
         @start="start"
         @end="end"
@@ -12,25 +11,24 @@
         <!-- style="display: inline-block; width:190px;height: 600px;background: #eee;overflow: auto"> -->
         <!-- <li v-for="(item, index) in list2" :class="setclass(item,index)" :key="index">{{item.name}}</li> -->
         <!-- <transition-group> -->
-          <div class="one">1</div>
-          <div class="two">2</div>
-          <div class="three">3</div>
-          <div class="four">4</div>
+          <div id="1" class="one leftModule">1</div>
+          <div id="2" class="one leftModule">2</div>
+          <div id="3" class="one leftModule">3</div>
+          <div id="4" class="one leftModule">4</div>
         <!-- </transition-group> -->
       </draggable>
     </div>
 
     <div class="right">
       <draggable
-        v-model="list2"
         @change="change"
         @start="start"
         @end="end"
         :move="move"
         >
-        <div class="five">5</div>
-        <div class="six">6</div>
-        <div class="seven">7</div>
+        <div id="5" class="one rightModule">5</div>
+        <div id="6" class="one rightModule">6</div>
+        <div id="7" class="one rightModule">7</div>
       </draggable>
     </div>
 
@@ -43,20 +41,29 @@ export default {
   components: { draggable },
   data () {
     return {
-
+      // list1Id: [],
+      // list2Id: []
+      leftIds: [],
+      rightIds: [],
+      allIds: []
     }
   },
   methods: {
     // evt里面有两个值，一个evt.added 和evt.removed  可以分别知道移动元素的ID和删除元素的ID
     change: function (evt) {
+      console.log('触发了change事件')
       console.log(evt)
     },
     // start ,end ,add,update, sort, remove 得到的都差不多
     start: function (evt) {
+      console.log('触发了start事件')
       console.log(evt)
     },
     end: function (evt) {
+      console.log('触发了end事件')
+      this.getIds()
       console.log(evt)
+      // console.log('this.list1Id:', this.list1Id)
       // evt.item // 可以知道拖动的本身
       // evt.to    // 可以知道拖动的目标列表
       // evt.from  // 可以知道之前的列表
@@ -64,8 +71,25 @@ export default {
       // evt.newIndex  // 可以知道拖动后的位置
     },
     move: function (evt, originalEvent) {
+      console.log('触发了move事件')
       console.log(evt)
       console.log(originalEvent) // 鼠标位置
+    },
+    getIds () {
+      const leftBoxs = document.querySelectorAll('.left .leftModule')
+      const rightBoxs = document.querySelectorAll('.right .rightModule')
+      this.leftIds = []
+      this.rightIds = []
+      for (let i = 0; i < leftBoxs.length; i++) {
+        this.leftIds.push(leftBoxs[i].id)
+      }
+      for (let i = 0; i < rightBoxs.length; i++) {
+        this.rightIds.push(rightBoxs[i].id)
+      }
+      this.allIds = this.leftIds.concat(this.rightIds)
+      console.log('this.leftIds:', this.leftIds)
+      console.log('this.rightIds:', this.rightIds)
+      console.log('this.allIds:', this.allIds)
     }
   }
 }
@@ -91,7 +115,7 @@ export default {
   box-sizing: border-box;
   padding: 10px;
 }
-.one, .two, .three, .four, .five, .six, .seven {
+.one {
   border: 1px solid red;
   width: 100%;
   height: 100px;
