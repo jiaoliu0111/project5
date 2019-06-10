@@ -61,8 +61,8 @@ export default {
     },
     end: function (evt) {
       console.log('触发了end事件')
-      this.getIds()
       console.log(evt)
+      this.getIds()
       // console.log('this.list1Id:', this.list1Id)
       // evt.item // 可以知道拖动的本身
       // evt.to    // 可以知道拖动的目标列表
