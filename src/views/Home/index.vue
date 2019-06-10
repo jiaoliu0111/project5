@@ -7,14 +7,23 @@
         @start="start"
         @end="end"
         :move="move"
+        :options="{handle: '#title', animation: 60}"
         >
         <!-- style="display: inline-block; width:190px;height: 600px;background: #eee;overflow: auto"> -->
         <!-- <li v-for="(item, index) in list2" :class="setclass(item,index)" :key="index">{{item.name}}</li> -->
         <!-- <transition-group> -->
-          <div id="1" class="one leftModule">1</div>
-          <div id="2" class="one leftModule">2</div>
-          <div id="3" class="one leftModule">3</div>
-          <div id="4" class="one leftModule">4</div>
+          <div id="1" class="one leftModule">
+              <div id="title">标题1</div>1
+          </div>
+          <div id="2" class="one leftModule">
+            <div id="title">标题2</div>2
+          </div>
+          <div id="3" class="one leftModule">
+            <div id="title">标题3</div>3
+          </div>
+          <div id="4" class="one leftModule">
+            <div id="title">标题4</div>4
+          </div>
         <!-- </transition-group> -->
       </draggable>
     </div>
@@ -26,9 +35,15 @@
         @end="end"
         :move="move"
         >
-        <div id="5" class="one rightModule">5</div>
-        <div id="6" class="one rightModule">6</div>
-        <div id="7" class="one rightModule">7</div>
+        <div id="5" class="one rightModule">
+            <div id="title">标题5</div>5
+        </div>
+        <div id="6" class="one rightModule">
+            <div id="title">标题6</div>6
+        </div>
+        <div id="7" class="one rightModule">
+            <div id="title">标题7</div>7
+        </div>
       </draggable>
     </div>
 
@@ -119,7 +134,16 @@ export default {
   border: 1px solid red;
   width: 100%;
   height: 100px;
-  padding: 10px;
+  /* padding: 10px; */
   box-sizing: border-box;
+}
+#title {
+  height: 30px;
+  background: pink;
+  cursor: move;
+}
+.ghost {
+  opacity: 0.5;
+  background: #c8ebfb;
 }
 </style>
